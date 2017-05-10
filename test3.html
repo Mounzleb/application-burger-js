@@ -1,0 +1,51 @@
+<script>
+let a = [1, 10, 20, 11, 8];
+
+let average = a.reduce(
+    function (acc, item, idx, arr) {
+        return acc + item / arr.length;
+    },
+    0
+);
+
+let res = a.reduce(
+    (acc, item, idx, arr) => {
+
+        function max(a, b) {
+            if (a === undefined) return b;
+            if (a > b) return a;
+            return b;
+        }
+
+        function min(a, b) {
+            if (a === undefined) return b;
+            if (a > b) return b;
+            return a;
+        }
+
+        function avg(acc = 0, itm, size) {
+            return acc + itm / size;
+        }
+
+        return {
+            max: max(acc.max, item),
+            min: min(acc.min, item),
+            avg: avg(acc.avg, item, arr.length)
+        }
+    },
+    {}
+);
+
+console.log(res);
+
+// Résultat attendu
+// res = {
+//     max: 20,
+//     min: 1,
+//     average: 10
+// }
+
+
+console.log(average);
+
+</script>

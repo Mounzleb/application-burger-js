@@ -1,0 +1,40 @@
+<script type="text/javascript">   
+
+
+
+	let tab = [1, 2, 3, 4, 5];
+
+// utilisation de la fonction accumulateur pour sommer toute les case du tableau
+
+
+
+
+//-------------- 1 ere methode------------------
+let somme = tab.reduce(function(accumulateur, item){
+
+	return accumulateur + item;
+}, 0); // initialisation de l'accumulateur
+
+let moy = somme/tab.length;
+console.log(moy);
+console.log(somme);
+
+//---------------2nd methode--------------------
+
+// l'accumùulateur est un objet vide donc vaut undefined
+
+
+let a = [10, 22, 13, 43, 4, 15];
+
+let average = a.reduce(
+	function (acc, item, idx, arr) {
+        return acc + item / arr.length;  // correspond à calculer la moyenne en separant notre fraction : a/tot + b/tot / c/tot ...
+    },
+    0 // initialisation de l'accumumulateur
+    );
+
+console.log(average);
+
+
+</script>
+

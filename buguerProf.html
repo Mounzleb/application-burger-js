@@ -1,0 +1,91 @@
+<script>
+let toppings = [
+    'egg', 
+    'cheese', 
+    'salad', 
+     'onion', 
+     'steak', 
+     'chicken', 
+     'bacon', 
+     'fish', 
+     'pickle', 
+     'mayo', 
+     'ketchup',
+];
+
+export function getRandomRecipe() {
+    let nbToppings = getRandomNbToppings(3, 6);
+    let recipe = [];
+
+    let counters = {}; // un obket counter
+
+    while (recipe.length < nbToppings) {
+        let i = Math.floor(Math.random() * toppings.length);
+        let randomTopping = toppings[i];
+        let c = counters[randomTopping] || 0; 
+        if (c < 2) {
+            counters[randomTopping] = c + 1;
+            recipe.push(randomTopping);
+        }
+    }
+
+    return recipe;
+}
+
+function getRandomNbToppings(min, max) {
+    console.log(max - min + 1);
+    return min + Math.floor(Math.random() * (max - min + 1));
+}
+
+console.log(getRandomRecipe());
+
+
+//-----------------Methode 2 mais l'aleatoire est un peux moind bien --------------------
+
+// let toppings = [
+//     'egg', 
+//     'cheese', 
+//     'salad', 
+//     'onion', 
+//     'steak', 
+//     'chicken', 
+//     'bacon', 
+//     'fish', 
+//     'pickle', 
+//     'mayo', 
+//     'ketchup'
+// ];
+
+// function getRandomRecipe() {
+//     let nbToppings = getRandomNbToppings(3, 6);
+
+//     let doubleToppings = [...toppings, ...toppings];
+//     let recipe = [];
+
+//     for (let i = 0; i < nbToppings; i++) {
+//         let j = Math.floor(Math.random() * doubleToppings.length);
+//         let randomTopping = doubleToppings.splice(j, 1);
+//         recipe.push(randomTopping[0]); 
+//     }
+//     // let counters = {};
+
+//     // while (recipe.length < nbToppings) {
+//     //     let i = Math.floor(Math.random() * toppings.length);
+//     //     let randomTopping = toppings[i];
+//     //     let c = counters[randomTopping] || 0;
+//     //     if (c < 2) {
+//     //         counters[randomTopping] = c + 1;
+//     //         recipe.push(randomTopping);
+//     //     }
+//     // }
+
+//     return recipe;
+// }
+
+// function getRandomNbToppings(min, max) {
+//     return min + Math.floor(Math.random() * (max - min + 1));
+// }
+
+
+
+ </script>

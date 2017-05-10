@@ -1,0 +1,11 @@
+<script>
+function doThisLater(i) {
+    console.log(i);
+}
+
+setTimeout(() => doThisLater(1), 1000);
+setTimeout(() => doThisLater(2), 100);
+setTimeout(() => doThisLater(3), 0);
+console.log(4);
+
+</script>

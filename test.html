@@ -1,0 +1,16 @@
+<script>
+    Array.prototype.myForEach = function(f) {
+        for (let i = 0; i < this.length; i++) {
+            f(this[i]);
+        }
+    }
+
+    let a = ['a', 'b', 'c'];
+
+    let myFunc = (item) => {
+        console.log('item = ', item);
+    };
+
+    a.forEach(myFunc);
+    a.myForEach(myFunc);
+</script>

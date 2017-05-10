@@ -1,0 +1,40 @@
+<script>
+    fetch('https://jsonplaceholder.typicode.com/photos')
+    
+    .then(response => response.json())
+
+    .then(json => console.log(json));
+
+
+
+    getUsers((err, users) => {
+    if (err) { } // gérer l'erreur
+        getFriendsOfUsers(users, (err, friends) => {
+        if (err) { } // gérer l'erreur
+            getNamesOfFriends(friends, (err, ages) => {
+            if (err) { } // gérer l'erreur
+                console.log(ages);
+        });
+    });
+});
+
+// comment gérer l'asynchrone avec Promises au lieux de se retrouver avec une pyamide doom comment ci-dessus et ou on doit gérer toutes les erreurs à toute les lignes
+
+getUsers()
+.then(
+    getFriendsOfUsers, // success
+    //ici on gére l'erreur localement et on met un return pausif donc on transforme en echec en succés ( on peux faire l'inverse) en le forçant pour pouvoir aller traiter les lignes suivantes. Idealement on fait ça 
+    //Mais au moins on essaie d'avoir un catch à la fin pour récupérer toutes les erreus eue e chemins dans le promises
+    err => {
+        console.log('Erreur lors de la récup des users');
+        return [];
+    }
+    )
+.then(getNamesOfFriends)
+.then(names => console.log(names))
+.catch(err => console.error('err', err));
+// le .catch est juste un .then(null, err => console.error('err', err)); avec un null en premier terme
+
+
+
+</script>
